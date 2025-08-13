@@ -71,8 +71,8 @@ See the `LICENSE.txt` file for details.
 
 ---
 
-## THANK YOU
+## THANK YOU ❤️‍🩹 
 
-Please give a star to the repository if you're using the plugin or you just like it 
+Please give a 🌟 to the repository if you're using the plugin or you just like it 
 
 ![Stars](https://img.shields.io/github/stars/novee7/SimpleReports?style=for-the-badge) 
