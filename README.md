@@ -13,7 +13,7 @@ A lightweight, simple and easy-to-use report plugin with **Discord integration**
 2. Place it in your server’s `plugins/` folder.
 3. Start the server to generate the default configuration file (`config.yml`).
 
-![Release](https://img.shields.io/github/v/release/novee7/Reports?style=for-the-badge)
+![Release](https://img.shields.io/github/v/release/novee7/SimpleReports?style=for-the-badge)
 
 ---
 
@@ -75,4 +75,4 @@ See the `LICENSE.txt` file for details.
 
 Please give a star to the repository if you're using the plugin or you just like it 
 
-![Stars](https://img.shields.io/github/stars/novee7/Reports?style=for-the-badge) 
+![Stars](https://img.shields.io/github/stars/novee7/SimpleReports?style=for-the-badge) 
