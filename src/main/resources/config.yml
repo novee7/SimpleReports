@@ -1,0 +1,16 @@
+messages:
+  usage: "&cUsage: /report <player> <type> <reason>"
+  report:
+    - "&7Thank you for reporting &#F4C4F3%player%&7. Your report has been submitted."
+    - "&cRemember that reporting someone randomly may result in a ban."
+  broadcast:
+    - "&7[&c&lREP&r&7] &c%player% has been reported for %type%: &r%reason%"
+  reload: "&aConfiguration reloaded successfully."
+
+settings:
+  webhook: "https://discord.com/api/webhooks/your-webhook-url"
+
+exempts:
+  player: "&cYou must specify a player to report."
+  reason: "&cYou must specify a reason to report."
+  type: "&cInvalid report type. Valid types are: cheating, exploiting, harassment, other."

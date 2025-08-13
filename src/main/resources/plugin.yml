@@ -1,0 +1,18 @@
+name: Reports
+version: '1.0'
+main: dev.nove.Initializer
+api-version: '1.21'
+prefix: REPORTS
+load: STARTUP
+authors: [ Novee7 ]
+description: Simple report plugin with discord integration.
+website: novee7.pages.dev
+permission-message: "&cYou do not have permission to use this command."
+
+commands:
+  report:
+    description: Report a player
+    permission: reports.use
+  reportreload:
+    description: Reload the plugin configuration
+    permission: reports.admin
