@@ -31,7 +31,7 @@ settings:
     TYPE: "sqlite"
 
     file:
-      yaml: 3"plugins/Reports/reports.yml"
+      yaml: "plugins/Reports/reports.yml"
       sqlite: "plugins/Reports/reports.db"
     logs:
       created: "Storage created."
