@@ -120,8 +120,8 @@ Save the file and **reload or restart your server**. Your plugin will now send r
 
 * Players with the permission `reports.use` can submit reports using `/report <player> <type> <reason>` 
 * Players with the permission `reports.staff` can get last player report or the last server report using:
-* Server: `/lastreport` 
-* Player: `/lastreport <player>` 
+  Server: `/lastreport` 
+  Player: `/lastreport <player>` 
 * Players with the permission `reports.admin` will receive report notifications directly in Discord and via minecraft
 
 ---
