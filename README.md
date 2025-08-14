@@ -51,11 +51,17 @@ settings:
 
   storage:
     enabled: true
-    file: "plugins/Reports/reports.yml"
+
+    # Storage types: yaml, sqlite
+    TYPE: "sqlite"
+
+    file:
+      yaml: 3"plugins/Reports/reports.yml"
+      sqlite: "plugins/Reports/reports.db"
     logs:
-      created: "File reports.yml created."
-      error-create: "Error while creating reports.yml: %error%"
-      error-saving: "Error while saving reports.yml: %error%"
+      created: "Storage created."
+      error-create: "Error while creating storage: %error%"
+      error-saving: "Error while saving storage: %error%"
 
   tabcomplete:
     enabled: true
@@ -91,7 +97,8 @@ exempts:
 To send report notifications to a different Discord channel, simply update the `settings.webhook` URL in `config.yml` line 25.
 
 ```yaml
-webhook: "https://discord.com/api/webhooks/your-webhook-url"
+settings:
+  webhook: "https://discord.com/api/webhooks/your-webhook-url"
 ```
 
 ## Changing the storage configs
@@ -101,6 +108,7 @@ webhook: "https://discord.com/api/webhooks/your-webhook-url"
 To disabile the storage, simply update the `settings.storage.enabled` boolean in `config.yml` line 28. 
 
 ```yaml
+  storage:
     enabled: true
 ```
 
@@ -109,7 +117,9 @@ To change the file path & name, simply update the `settings.storage.file` name i
 *To add or change directory just write the directory name and add a "/"*
 
 ```yaml
-    file: "plugins/Reports/reports.yml"
+    file:
+      yaml: 3"plugins/Reports/reports.yml"
+      sqlite: "plugins/Reports/reports.db"
 ```
 
 Save the file and **reload or restart your server**. Your plugin will now send reports to the new webhook.
