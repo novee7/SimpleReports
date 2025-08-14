@@ -1,4 +1,4 @@
-# REPORTS
+# **Simple Reports**
 
 A lightweight, simple and easy-to-use report plugin with **Discord integration** for notifying admins about player reports in real-time.
 
