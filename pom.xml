@@ -5,8 +5,8 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>dev.nove</groupId>
-    <artifactId>reports</artifactId>
-    <version>1.0</version>
+    <artifactId>SimpleReports</artifactId>
+    <version>1.1</version>
     <packaging>jar</packaging>
 
     <name>reports</name>

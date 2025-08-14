@@ -52,6 +52,8 @@ public class ReportCommand extends ICommand {
     }
     @Override
     public List<String> tab(String[] args) {
+        if (!config().getBoolean("settings.tabcomplete.enabled")) return List.of();
+
         if (args.length == 1) {
             return Bukkit.getOnlinePlayers()
                     .stream()
@@ -63,15 +65,27 @@ public class ReportCommand extends ICommand {
                     .filter(s -> s.toLowerCase().startsWith(args[1].toLowerCase()))
                     .toList();
         }
-        if (args[1].equalsIgnoreCase("cheating")) {
-            return List.of("Macros", "CW", "AutoTotem", "AimAssist", "TriggerBot", "KillAura", "Reach");
-        }
-        return List.of();
+
+        return switch (args[1].toLowerCase()) {
+            case "cheating" -> config().getStringList("settings.tabcomplete.cheating").stream()
+                    .filter(s -> s.toLowerCase().startsWith(args[2].toLowerCase()))
+                    .toList();
+            case "exploiting" -> config().getStringList("settings.tabcomplete.exploiting").stream()
+                    .filter(s -> s.toLowerCase().startsWith(args[2].toLowerCase()))
+                    .toList();
+            case "harassment" -> config().getStringList("settings.tabcomplete.harassment").stream()
+                    .filter(s -> s.toLowerCase().startsWith(args[2].toLowerCase()))
+                    .toList();
+            case "other" -> config().getStringList("settings.tabcomplete.other").stream()
+                    .filter(s -> s.toLowerCase().startsWith(args[2].toLowerCase()))
+                    .toList();
+            default -> List.of();
+        };
     }
 
-    public static class ReportReloadCommand extends ICommand {
+    public static class Reload extends ICommand {
 
-        public ReportReloadCommand(JavaPlugin plugin) {
+        public Reload(JavaPlugin plugin) {
             super(plugin, false);
         }
 

@@ -1,7 +1,9 @@
 package dev.nove;
 
+import dev.nove.commands.LastReportCommand;
 import dev.nove.commands.ReportCommand;
 
+import dev.nove.file.ReportsYML;
 import dev.nove.hook.DiscordHook;
 import dev.nove.model.managers.ReportManager;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -15,13 +17,18 @@ public final class Initializer extends JavaPlugin {
         CORE = this;
 
         DiscordHook hook = new DiscordHook();
-        ReportManager manager = new ReportManager(this, hook);
+        ReportsYML file = new ReportsYML(this);
+        ReportManager manager = new ReportManager(this, file, hook);
 
         new ReportCommand(this,manager).register("report");
-        new ReportCommand.ReportReloadCommand(this).register("reportreload");
+        new ReportCommand.Reload(this).register("reportreload");
+        new LastReportCommand(this, manager).register("lastreport");
 
         this.getConfig().options().copyDefaults(true);
         this.saveDefaultConfig();
+
+        if (getConfig().getBoolean("settings.storage.enabled",true)) file.initialize();
+
     }
 
     @Override

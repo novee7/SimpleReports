@@ -13,6 +13,9 @@ commands:
   report:
     description: Report a player
     permission: reports.use
+  lastreport:
+    description: Get the last report on the server or done by a player
+    permission: reports.staff
   reportreload:
     description: Reload the plugin configuration
     permission: reports.admin
