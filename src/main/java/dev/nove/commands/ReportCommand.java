@@ -1,8 +1,8 @@
 package dev.nove.commands;
 
 import dev.nove.model.ICommand;
+import dev.nove.model.Report;
 import dev.nove.model.managers.ReportManager;
-import dev.nove.model.managers.ReportType;
 import dev.nove.utils.MessageUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
@@ -23,33 +23,33 @@ public class ReportCommand extends ICommand {
 
     @Override
     public void command(Player player, String[] args) {
-        if (args.length < 3 && args.length != 1) {
+        if (args.length < 3) {
             MessageUtils.sendMessage(player, config().getString("messages.usage"));
             return;
         }
+
         Player target = Bukkit.getPlayer(args[0]);
         if (target == null || !target.isOnline()) {
             MessageUtils.sendMessage(player, config().getString("exempts.player"));
             return;
         }
+
+        String type = args[1];
         String reason = String.join(" ", Arrays.copyOfRange(args, 2, args.length));
         if (reason.isEmpty()) {
             MessageUtils.sendMessage(player, config().getString("exempts.reason"));
             return;
         }
-        String type = args[1];
-        switch (type) {
-            case "cheating" -> this.manager.report(player,target, ReportType.CHEATING, reason);
 
-            case "exploiting" -> this.manager.report(player,target, ReportType.EXPLOITING, reason);
-
-            case "harassment" -> this.manager.report(player,target, ReportType.HARASSMENT, reason);
-
-            case "other" -> this.manager.report(player,target, ReportType.OTHER, reason);
-
+        switch (type.toLowerCase()) {
+            case "cheating" -> this.manager.report(player, target, Report.Type.CHEATING, reason);
+            case "exploiting" -> this.manager.report(player, target, Report.Type.EXPLOITING, reason);
+            case "harassment" -> this.manager.report(player, target, Report.Type.HARASSMENT, reason);
+            case "other" -> this.manager.report(player, target, Report.Type.OTHER, reason);
             default -> MessageUtils.sendMessage(player, config().getString("exempts.type"));
         }
     }
+
     @Override
     public List<String> tab(String[] args) {
         if (!config().getBoolean("settings.tabcomplete.enabled")) return List.of();

@@ -1,9 +1,9 @@
-package dev.nove.file;
+package dev.nove.storage;
 
 import dev.nove.Initializer;
+import dev.nove.model.IFile;
 import dev.nove.model.IManager;
-import dev.nove.model.managers.Report;
-import dev.nove.model.managers.ReportType;
+import dev.nove.model.Report;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -14,7 +14,7 @@ import java.io.IOException;
 import java.time.Instant;
 import java.util.*;
 
-public class ReportsYML extends IManager {
+public class ReportsYML extends IManager implements IFile {
 
     private static final File FILE;
     private static YamlConfiguration CONFIG;
@@ -68,7 +68,7 @@ public class ReportsYML extends IManager {
         if (CONFIG.contains(reporter.toString())) {
             for (String key : Objects.requireNonNull(CONFIG.getConfigurationSection(reporter.toString())).getKeys(false)) {
                 UUID reported = UUID.fromString(Objects.requireNonNull(CONFIG.getString(reporter + "." + key + ".reported")));
-                ReportType type = ReportType.valueOf(CONFIG.getString(reporter + "." + key + ".type"));
+                Report.Type type = Report.Type.valueOf(CONFIG.getString(reporter + "." + key + ".type"));
                 Instant timestamp = Instant.parse(Objects.requireNonNull(CONFIG.getString(reporter + "." + key + ".timestamp")));
                 String reason = CONFIG.getString(reporter + "." + key + ".reason");
                 reports.add(new Report(reporter, reported, type, reason, timestamp));
@@ -95,7 +95,7 @@ public class ReportsYML extends IManager {
     }
 
     static {
-        FILE = new File(Objects.requireNonNull(Initializer.CORE.getConfig().getString("settings.storage.file")));
+        FILE = new File(Objects.requireNonNull(Initializer.CORE.getConfig().getString("settings.storage.file.yaml")));
         CONFIG = YamlConfiguration.loadConfiguration(FILE);
     }
 }

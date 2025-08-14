@@ -2,15 +2,12 @@ package dev.nove.commands;
 
 import dev.nove.model.ICommand;
 import dev.nove.model.managers.ReportManager;
-import dev.nove.model.managers.ReportType;
 import dev.nove.utils.MessageUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Stream;
 
 public class LastReportCommand extends ICommand {
 
@@ -37,6 +34,7 @@ public class LastReportCommand extends ICommand {
         }
         MessageUtils.sendMessage(player, config().getString("exempts.argument"));
     }
+
     @Override
     public List<String> tab(String[] args) {
         if (!config().getBoolean("settings.tabcomplete.enabled")) return List.of();

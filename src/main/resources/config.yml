@@ -26,11 +26,17 @@ settings:
 
   storage:
     enabled: true
-    file: "plugins/Reports/reports.yml"
+
+    # Storage types: yaml, sqlite
+    TYPE: "sqlite"
+
+    file:
+      yaml: 3"plugins/Reports/reports.yml"
+      sqlite: "plugins/Reports/reports.db"
     logs:
-      created: "File reports.yml created."
-      error-create: "Error while creating reports.yml: %error%"
-      error-saving: "Error while saving reports.yml: %error%"
+      created: "Storage created."
+      error-create: "Error while creating storage: %error%"
+      error-saving: "Error while saving storage: %error%"
 
   tabcomplete:
     enabled: true

@@ -1,8 +1,9 @@
 package dev.nove.model.managers;
 
-import dev.nove.file.ReportsYML;
 import dev.nove.hook.DiscordHook;
+import dev.nove.model.IFile;
 import dev.nove.model.IManager;
+import dev.nove.model.Report;
 import dev.nove.utils.GeneralUtils;
 import dev.nove.utils.MessageUtils;
 import org.bukkit.Bukkit;
@@ -14,16 +15,16 @@ import java.util.Objects;
 
 public class ReportManager extends IManager {
 
-    private final ReportsYML file;
+    private final IFile storage;
     private final DiscordHook webhook;
 
-    public ReportManager(JavaPlugin plugin, ReportsYML file, DiscordHook webhook) {
+    public ReportManager(JavaPlugin plugin, IFile storage, DiscordHook webhook) {
         super(plugin);
         this.webhook = webhook;
-        this.file = file;
+        this.storage = storage;
     }
 
-    public void report(Player player, Player target, ReportType type, String reason) {
+    public void report(Player player, Player target,Report.Type type, String reason) {
         for (String message : config().getStringList("messages.broadcast")) {
             GeneralUtils.broadcast(message.replace("%player%", player.getName())
                     .replace("%target%", target.getName())
@@ -32,20 +33,18 @@ public class ReportManager extends IManager {
         }
         for (String message : config().getStringList("messages.report")) {
             MessageUtils.sendMessage(player, message.replace("%player%", player.getName()));
-
         }
-        this.file.addReport(new Report(player.getUniqueId(), target.getUniqueId(), type, reason, Instant.now()));
+
+        this.storage.addReport(new Report(player.getUniqueId(), target.getUniqueId(), type, reason, Instant.now()));
         this.webhook.sendReport(player, target, type.name(), reason);
     }
 
     public void lastReport(Player player) {
-        Report report = this.file.getLastReport();
-
+        Report report = this.storage.getLastReport();
         if (report == null) {
             MessageUtils.sendMessage(player, config().getString("exempts.no-reports"));
             return;
         }
-
         for (String message : config().getStringList("messages.last-report.server")) {
             MessageUtils.sendMessage(player, message
                     .replace("%target%", Objects.requireNonNull(Bukkit.getOfflinePlayer(report.reported()).getName()))
@@ -56,12 +55,11 @@ public class ReportManager extends IManager {
     }
 
     public void lastReport(Player player, Player target) {
-        Report report = this.file.getLastReportOfPlayer(target.getUniqueId());
+        Report report = this.storage.getLastReportOfPlayer(target.getUniqueId());
         if (report == null) {
             MessageUtils.sendMessage(player, config().getString("exempts.no-reports"));
             return;
         }
-
         for (String message : config().getStringList("messages.last-report.target")) {
             MessageUtils.sendMessage(player, message
                     .replace("%player%", player.getName())
