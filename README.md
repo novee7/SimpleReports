@@ -5,7 +5,7 @@ A lightweight, simple and easy-to-use report plugin with **Discord integration**
 ### Features
 
 * Instant Discord notifications via webhook
-* Clean storage via YAML to get the last reports
+* Clean storage via YAML or SQLite
 * Lightweight and easy to integrate into any server
 
 ### Installation 
