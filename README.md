@@ -8,11 +8,13 @@ A lightweight, simple and easy-to-use report plugin with **Discord integration**
 * Clean storage via YAML to get the last reports
 * Lightweight and easy to integrate into any server
 
-### Installation ![Release](https://img.shields.io/github/v/release/novee7/SimpleReports?style=for-the-badge)
+### Installation 
 
 1. Download the plugin JAR.
 2. Place it in your server’s `plugins/` folder.
 3. Start the server to generate the default configuration file (`config.yml`).
+
+![Release](https://img.shields.io/github/v/release/novee7/SimpleReports?style=for-the-badge)
 
 ---
 
