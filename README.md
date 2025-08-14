@@ -18,7 +18,7 @@ A lightweight, simple and easy-to-use report plugin with **Discord integration**
 
 ---
 
-## CONFIG.YML
+## Editing the configuration
 
 Open the `config.yml` file in the plugin folder. You will find:
 
