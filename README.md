@@ -112,8 +112,17 @@ To disabile the storage, simply update the `settings.storage.enabled` boolean in
     enabled: true
 ```
 
+### Changing storage type
+To change the storage type go to `settings.storage.type` name in `config.yml` line 31. 
+
+
+```yaml
+    # Storage types: yaml, sqlite
+    TYPE: "sqlite"
+```
+
 ### File name & Path
-To change the file path & name, simply update the `settings.storage.file` name in `config.yml` line 29. 
+To change the file path & name, simply update the `settings.storage.file` name in `config.yml` line 33. 
 *To add or change directory just write the directory name and add a "/"*
 
 ```yaml
