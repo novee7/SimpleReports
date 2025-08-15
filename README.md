@@ -23,48 +23,76 @@ A lightweight, simple and easy-to-use report plugin with **Discord integration**
 Open the `config.yml` file in the plugin folder. You will find:
 
 ```yaml
+#                     ┬─┐┌─┐┌─┐┌─┐┬─┐┌┬┐┌─┐
+#                     ├┬┘├┤ ├─┘│ │├┬┘ │ └─┐
+#                     ┴└─└─┘┴  └─┘┴└─ ┴ └─┘
+
+#               The messages are in Lists so you can
+#             add or remove as many messages as you want.
+#             All the configuration supports HEX colors.
+#               Placeholders ONLY work if used by the 
+#                   plugin's default config.yml.
+#
+
 messages:
   usage: "&cUsage: /report <player> <type> <reason>"
+
   report:
-    - "&7Thank you for reporting &#F4C4F3%player%&7. Your report has been submitted."
+    - "&7Thank you for reporting &c%player%&7. Your report has been submitted."
     - "&cRemember that reporting someone randomly may result in a ban."
+
   broadcast:
     - "&7[&c&lREP&r&7] &c%player% has been reported for %type%: &r%reason%"
+
   reload: "&aConfiguration reloaded successfully."
 
   last-report:
+
+    # Last report made on the server
     server:
-      - "&7The last report sent by a player is:"
-      - "&7Target: &#F4C4F3%target%"
-      - "&7Type: &#F4C4F3%type%"
-      - "&7Reason: &#F4C4F3%reason%"
-      - "&7Time: &#F4C4F3%time%"
+      - "&7[&c&lREP&r&7]  The last report sent by a player is:"
+      - "&7Target: &c%target%"
+      - "&7Type: &c%type%"
+      - "&7Reason: &c%reason%"
+      - "&7Time: &c%time%"
+
+    # Last report made by a specific player (%player%)
     target:
-      - "&7The last report sent by &#F4C4F3%player% &7is:"
-      - "&7Target: &#F4C4F3%target%"
-      - "&7Type: &#F4C4F3%type%"
-      - "&7Reason: &#F4C4F3%reason%"
-      - "&7Time: &#F4C4F3%time%"
+      - "&7[&c&lREP&r&7] The last report sent by &c%player% &7is:"
+      - "&7Target: &c%target%"
+      - "&7Type: &c%type%"
+      - "&7Reason: &c%reason%"
+      - "&7Time: &c%time%"
 
 settings:
-  webhook: "https://discord.com/api/webhooks/your-webhook-url"
+
+  webhook:
+    # Enable (true) or disable (false) the Discord integration.
+    enabled: true
+    # Replace "your-webhook-url" with your actual Discord webhook URL.
+    url: "https://discord.com/api/webhooks/your-webhook-url"
 
   storage:
+    # Enable (true) or disable (false) the storage system.
     enabled: true
 
     # Storage types: yaml, sqlite
-    TYPE: "sqlite"
+    type: "sqlite"
 
+    # Paths/names of the storage files.
     file:
-      yaml: 3"plugins/Reports/reports.yml"
+      yaml: "plugins/Reports/reports.yml"
       sqlite: "plugins/Reports/reports.db"
+
     logs:
       created: "Storage created."
       error-create: "Error while creating storage: %error%"
       error-saving: "Error while saving storage: %error%"
 
   tabcomplete:
+    # Enable (true) or disable (false) the tab completion feature.
     enabled: true
+
     cheating:
       - "Macros"
       - "CW"
