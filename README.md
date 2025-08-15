@@ -129,7 +129,7 @@ To disabile the storage, simply update the `settings.webhook.enabled` boolean in
 
 ```yaml
     # Enable (true) or disable (false) the Discord integration.
-    enabled: true1
+    enabled: true
 ```
 
 ### Changing the webhoo URL
