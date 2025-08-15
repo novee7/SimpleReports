@@ -163,6 +163,7 @@ To change the storage type go to `settings.storage.type` name in `config.yml` li
 
 ### File name & Path
 To change the file path & name, simply update the `settings.storage.file` name in `config.yml` line 58. 
+<br>
 *To add or change directory just write the directory name and add a "/"*
 
 ```yaml
