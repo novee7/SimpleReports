@@ -22,7 +22,7 @@ public final class Initializer extends JavaPlugin {
         this.getConfig().options().copyDefaults(true);
         this.saveDefaultConfig();
 
-        switch (getConfig().getString("settings.storage.TYPE","yaml1").toLowerCase()) {
+        switch (getConfig().getString("settings.storage.type","yaml").toLowerCase()) {
             case "sqlite":
                 STORAGE = new ReportsSQL(this);
                 break;
