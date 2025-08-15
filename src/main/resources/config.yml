@@ -28,7 +28,7 @@ settings:
     enabled: true
 
     # Storage types: yaml, sqlite
-    TYPE: "sqlite"
+    type: "sqlite"
 
     file:
       yaml: "plugins/Reports/reports.yml"
