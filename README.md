@@ -120,42 +120,55 @@ exempts:
 *All the configs support hex codes with the prefix & and basic Minecraft colour codes.*
 *Placeholders ONLY work if used by the plugin's default config.yml.*
 
-## Changing the Discord Webhook
+## Changing the Discord configs
 
-To send report notifications to a different Discord channel, simply update the `settings.webhook` URL in `config.yml` line 25.
+### Disable the Discord webhook or re-enable
+
+To disabile the storage, simply update the `settings.webhook.enabled` boolean in `config.yml` line 46. 
+
 
 ```yaml
-settings:
-  webhook: "https://discord.com/api/webhooks/your-webhook-url"
+    # Enable (true) or disable (false) the Discord integration.
+    enabled: true1
+```
+
+### Changing the webhoo URL
+
+To send report notifications to a different Discord channel, simply update the `settings.webhook.url` URL in `config.yml` line 48.
+
+```yaml
+    # Replace "your-webhook-url" with your actual Discord webhook URL.
+    url: "https://discord.com/api/webhooks/your-webhook-url"
 ```
 
 ## Changing the storage configs
 
 ### Disable the storage or re-enable
 
-To disabile the storage, simply update the `settings.storage.enabled` boolean in `config.yml` line 28. 
+To disabile the storage, simply update the `settings.storage.enabled` boolean in `config.yml` line 52. 
 
 ```yaml
-  storage:
+    # Enable (true) or disable (false) the storage system.
     enabled: true
 ```
 
 ### Changing storage type
-To change the storage type go to `settings.storage.type` name in `config.yml` line 31. 
+To change the storage type go to `settings.storage.type` name in `config.yml` line 55. 
 
 
 ```yaml
     # Storage types: yaml, sqlite
-    TYPE: "sqlite"
+    type: "sqlite"
 ```
 
 ### File name & Path
-To change the file path & name, simply update the `settings.storage.file` name in `config.yml` line 33. 
+To change the file path & name, simply update the `settings.storage.file` name in `config.yml` line 58. 
 *To add or change directory just write the directory name and add a "/"*
 
 ```yaml
+    # Paths/names of the storage files.
     file:
-      yaml: 3"plugins/Reports/reports.yml"
+      yaml: "plugins/Reports/reports.yml"
       sqlite: "plugins/Reports/reports.db"
 ```
 
